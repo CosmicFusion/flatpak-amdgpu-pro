@@ -2,6 +2,7 @@ app-id: repo.radeon.amdgpu-pro
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '22.08'
 build-extension: true
+x-gl-version: &gl-version '22.08'
 x-gl-versions: &gl-versions '22.08'
 sdk: org.freedesktop.Sdk
 tags:

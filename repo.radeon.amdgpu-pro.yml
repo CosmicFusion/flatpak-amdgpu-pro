@@ -1,16 +1,7 @@
 app-id: repo.radeon.amdgpu-pro
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '22.08'
-build-extension: true
-repo: '22.20.3'
-major: '22.20'
-minor: '1462318'
-amf: '1.4.26'
-enc: '1.0'
-amdvlk: '2022.Q3.4'
-drm: '2.4.110.50203' 
-amdgpu: '1.0.0.50203'
-ubuntu: '22.04'
+#build-extension: true
 x-gl-version: &gl-version '22.08'
 x-gl-versions: &gl-versions '22.08'
 sdk: org.freedesktop.Sdk
@@ -55,11 +46,19 @@ add-extensions:
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d
     download-if: active-gl-driver
     enable-if: active-gl-driver
-    
 
+modules:
+  - name: amdvlk-pro
+    buildsystem: simple
+    build-commands:
+      - |
+        ls
     sources:
       - type: extra-data
-        filename: amdvlk-pro
-        url: 
-        path: debs
+        url: http://repo.radeon.com/amdgpu/22.20.3/ubuntu/pool/proprietary/v/vulkan-amdgpu-pro/vulkan-amdgpu-pro_22.20-1462318~22.04_amd64.deb
+        filename: amdvlk-pro.deb
+        sha256: 'd31975ec084ec2c934f372685a091d79cd713415e171c2b07749ff1ed51a192d'
+        size: '1' 
+
+
   

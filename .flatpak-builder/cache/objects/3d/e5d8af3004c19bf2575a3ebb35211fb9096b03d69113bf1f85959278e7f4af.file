@@ -1,0 +1,50 @@
+{
+  "id" : "repo.radeon.amdgpu-pro",
+  "runtime" : "org.freedesktop.Platform",
+  "runtime-version" : "22.08",
+  "runtime-commit" : "289b339fd2050a03e90dd05b937b7b2320ad343eb8389a6e1eb6e87cfdb88e1e",
+  "sdk" : "org.freedesktop.Sdk",
+  "sdk-commit" : "eb311882bf5bd302aa2c32ef8701dd7f3dfcb171d448eb001fd7bc43ce42f2d3",
+  "build-extension" : true,
+  "sdk-extensions" : [
+    "org.freedesktop.Sdk.Compat.i386",
+    "org.freedesktop.Sdk.Extension.toolchain-i386"
+  ],
+  "finish-args" : [
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=x11",
+    "--socket=pulseaudio",
+    "--device=all",
+    "--allow=multiarch",
+    "--allow=devel",
+    "--allow=per-app-dev-shm",
+    "--env=PATH=/app/bin:/app/utils/bin:/usr/bin",
+    "--env=XDG_CONFIG_DIRS=/etc/xdg:/usr/lib/x86_64-linux-gnu/GL:/usr/lib/i386-linux-gnu/GL",
+    "--env=XDG_DATA_DIRS=/app/share:/usr/lib/extensions/vulkan/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share"
+  ],
+  "tags" : [
+    "proprietary"
+  ],
+  "add-extensions" : {
+    "org.freedesktop.Platform.Compat.i386" : {
+      "directory" : "lib/i386-linux-gnu",
+      "version" : "22.08"
+    },
+    "org.freedesktop.Platform.Compat.i386.Debug" : {
+      "directory" : "lib/debug/lib/i386-linux-gnu",
+      "version" : "22.08"
+    },
+    "org.freedesktop.Platform.GL32" : {
+      "directory" : "lib/i386-linux-gnu/GL",
+      "add-ld-path" : "lib",
+      "download-if" : "active-gl-driver",
+      "enable-if" : "active-gl-driver",
+      "merge-dirs" : "vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d;vulkan/implicit_layer.d",
+      "version" : "22.08",
+      "versions" : "22.08"
+    }
+  },
+  "x-gl-version" : "22.08",
+  "x-gl-versions" : "22.08"
+}

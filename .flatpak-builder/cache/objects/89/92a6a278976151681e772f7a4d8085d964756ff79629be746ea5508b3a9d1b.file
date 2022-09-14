@@ -1,0 +1,9 @@
+[Runtime]
+name=repo.radeon.amdgpu-pro
+runtime=org.freedesktop.Platform/x86_64/22.08
+sdk=org.freedesktop.Sdk/x86_64/22.08
+tags=proprietary;
+
+[ExtensionOf]
+ref=runtime/org.freedesktop.Platform/x86_64/22.08
+runtime=org.freedesktop.Platform/x86_64/22.08

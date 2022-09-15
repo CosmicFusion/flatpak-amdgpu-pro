@@ -2,7 +2,7 @@ app-id: repo.radeon.amdgpu-pro
 runtime: org.freedesktop.Platform
 branch: 22.20.3
 runtime-version: &runtime-version '22.08'
-build-runtime: true
+#build-runtime: true
 x-gl-version: &gl-version '22.08'
 x-gl-versions: &gl-versions '22.08'
 sdk: org.freedesktop.Sdk
@@ -53,13 +53,25 @@ modules:
     buildsystem: simple
     build-commands:
       - |
-        ls
+         cp -r apply_extra/files $FLATPAK_DEST/
     sources:
-      - type: "extra-data"
+      - type: script
+        dest-filename: apply_extra
+        commands:
+        - mkdir -p files
+        - ar x --output . amdvlk-pro.deb
+        - tar -xJC files -f data.tar.xz || tar -xC files -f data.tar.gz  
+      - type: extra-data
+        filename: amdvlk-pro.deb
         url: "http://repo.radeon.com/amdgpu/22.20.3/ubuntu/pool/proprietary/v/vulkan-amdgpu-pro/vulkan-amdgpu-pro_22.20-1462318~22.04_amd64.deb"
-        filename: "amdvlk-pro.deb"
         sha256: d31975ec084ec2c934f372685a091d79cd713415e171c2b07749ff1ed51a192d
         size: 9222240
+      
+      
+      
+         
+      
+      
 
 
 
